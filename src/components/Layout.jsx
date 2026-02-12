@@ -1,13 +1,15 @@
 import React from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import { Search, Settings, Music } from 'lucide-react';
+import { Search, Settings, Music, Home as HomeIcon, Library } from 'lucide-react';
 import Player from './Player';
 
 export default function Layout({ currentSong, isPlaying, onPlayPause }) {
   const location = useLocation();
 
   const navItems = [
-    { icon: Search, label: "Search", path: "/" },
+    { icon: HomeIcon, label: "Home", path: "/" },
+    { icon: Search, label: "Search", path: "/search" },
+    { icon: Library, label: "Your Library", path: "/library" }, // Placeholder
     { icon: Settings, label: "Settings", path: "/settings" },
   ];
 
@@ -52,12 +54,13 @@ export default function Layout({ currentSong, isPlaying, onPlayPause }) {
                     <span className="text-lg font-bold">Agent Spotify</span>
                 </div>
                  <div className="flex gap-x-4">
-                    <Link to="/" className={location.pathname === '/' ? 'text-white' : 'text-gray-400'}><Search size={24} /></Link>
+                    <Link to="/" className={location.pathname === '/' ? 'text-white' : 'text-gray-400'}><HomeIcon size={24} /></Link>
+                    <Link to="/search" className={location.pathname === '/search' ? 'text-white' : 'text-gray-400'}><Search size={24} /></Link>
                     <Link to="/settings" className={location.pathname === '/settings' ? 'text-white' : 'text-gray-400'}><Settings size={24} /></Link>
                  </div>
             </div>
 
-            <div className="p-4 md:p-8 pb-32 min-h-full">
+            <div className="pb-32 min-h-full">
                  <Outlet />
             </div>
         </main>
