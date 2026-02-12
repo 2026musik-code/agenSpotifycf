@@ -1,4 +1,4 @@
-name = "agent-spotify-cf"
+name = "agenspotifycf"
 main = "src/worker.js"
 compatibility_date = "2024-02-12"
 
